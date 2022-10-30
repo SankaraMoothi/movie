@@ -5,7 +5,7 @@ function DashBoard({ elementee }) {
   return (
     <>
       {elementee.map((els) => (
-        <div className="col-lg-3 col-md-4 col-sm-6 mb-2 vvv">
+        <div className="col-lg-3 col-md-4 col-sm-6 mb-4 vvv">
           <div className="card" style={{ width: "18rem" }}>
             <img
               className="card-img-top img"
