@@ -14,7 +14,7 @@ function DashBoard({ elementee }) {
       {elementee.map((els, index) => (
         <div className="col-lg-3 col-md-6 col-sm-6 mb-4 vvv" key={index}>
           <div className="card" style={{ width: "25rem" }}>
-            <image
+            <img
               className="card-img-top img"
               src={els.poster}
               style={{ height: "640px", width: "100%" }}
