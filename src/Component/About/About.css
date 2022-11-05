@@ -1,6 +1,5 @@
 .AboutMovie {
-  max-width: 50%;
-  margin: auto;
+  margin: 0 auto;
   padding: 15px;
   color: rgb(233, 74, 74);
   border: 2px solid black;

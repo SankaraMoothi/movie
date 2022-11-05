@@ -2,7 +2,7 @@ import "./App.css";
 import { useState } from "react";
 import DashBoard from "./Component/DashBoard";
 import "../node_modules/bootstrap/dist/css/bootstrap.css";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Navbar from "./Component/Navbar";
 import MoveInput from "./Component/MovieInput";
 import About from "./Component/About";
