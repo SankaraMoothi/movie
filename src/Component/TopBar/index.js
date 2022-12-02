@@ -14,7 +14,7 @@ import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import { useNavigate } from "react-router-dom";
 
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+const settings = ["Profile", "Account", "Dashboard"];
 
 function TopBar({ mode, setMode }) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -56,7 +56,7 @@ function TopBar({ mode, setMode }) {
               textDecoration: "none",
             }}
           >
-            LOGO
+            Mass
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -189,6 +189,11 @@ function TopBar({ mode, setMode }) {
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))}
+              <MenuItem>
+                <Button sx={{ color: "inherit" }} onClick={() => navigate("/")}>
+                  Logout
+                </Button>
+              </MenuItem>
             </Menu>
           </Box>
         </Toolbar>

@@ -22,14 +22,16 @@ export default function CardCreate({ data, id, deleteMovie }) {
   const [dislike, setdislike] = React.useState(0);
   return (
     <Card sx={{ maxWidth: 345 }}>
-      <CardActionArea onClick={() => navigate(`MovieView/${data.id}`)}>
-        <CardMedia
-          component="img"
-          height="600"
-          sx={{ objectFit: "cover" }}
-          image={data.poster}
-          alt="green iguana"
-        />
+      <CardActionArea>
+        <div onClick={() => navigate(`MovieView/${data.id}`)}>
+          <CardMedia
+            component="img"
+            height="600"
+            sx={{ objectFit: "cover" }}
+            image={data.poster}
+            alt="green iguana"
+          />
+        </div>
         <CardContent sx={{ padding: 2 }}>
           <Typography
             gutterBottom
