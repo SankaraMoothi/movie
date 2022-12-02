@@ -132,7 +132,7 @@ function TopBar({ mode, setMode }) {
               textDecoration: "none",
             }}
           >
-            LOGO
+            Mass
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             <MenuItem>
