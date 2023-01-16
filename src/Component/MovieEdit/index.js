@@ -5,6 +5,7 @@ import * as yup from "yup";
 import React, { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useFormik } from "formik";
+import { API } from "../../gobalAPI/API";
 
 function MovieEdit() {
   const param = useParams();
@@ -30,10 +31,7 @@ function MovieEdit() {
     },
     validationSchema: formikValidation,
     onSubmit: async (values) => {
-      const Movies = await axios.put(
-        `https://631d700ecc652771a4859a9c.mockapi.io/movies/${param.id}`,
-        values
-      );
+      const Movies = await axios.put(`${API}/movie/${param.id}`, values);
       navigate("/Portal");
     },
   });
@@ -42,9 +40,7 @@ function MovieEdit() {
   }, []);
   const LoadData = async () => {
     try {
-      const Movies = await axios.get(
-        `https://631d700ecc652771a4859a9c.mockapi.io/movies/${param.id}`
-      );
+      const Movies = await axios.get(`${API}/movie/${param.id}`);
       formik.setValues({
         name: Movies.data.name,
         poster: Movies.data.poster,

@@ -10,7 +10,7 @@
 
 # production
 /build
-
+/gobalAPI
 # misc
 .DS_Store
 .env.local

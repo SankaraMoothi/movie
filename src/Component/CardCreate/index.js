@@ -21,9 +21,9 @@ export default function CardCreate({ data, id, deleteMovie }) {
   const [like, setlike] = React.useState(0);
   const [dislike, setdislike] = React.useState(0);
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 345, marginBottom: 3 }}>
       <CardActionArea>
-        <div onClick={() => navigate(`MovieView/${data.id}`)}>
+        <div onClick={() => navigate(`MovieView/${data._id}`)}>
           <CardMedia
             component="img"
             height="600"
@@ -73,7 +73,7 @@ export default function CardCreate({ data, id, deleteMovie }) {
         </div>
 
         <div>
-          <IconButton onClick={() => navigate(`MovieEdit/${data.id}`)}>
+          <IconButton onClick={() => navigate(`MovieEdit/${data._id}`)}>
             <EditIcon />
           </IconButton>
           <IconButton sx={{ color: "red" }} onClick={() => deleteMovie(id)}>

@@ -2,6 +2,7 @@ import { Grid } from "@mui/material";
 import { Box, Container } from "@mui/system";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { API } from "../../gobalAPI/API";
 import CardCreate from "../CardCreate";
 
 function DashBoard() {
@@ -10,21 +11,18 @@ function DashBoard() {
     loadData();
   }, []);
   let loadData = async () => {
-    let movies = await axios.get(
-      "https://631d700ecc652771a4859a9c.mockapi.io/movies"
-    );
+    let movies = await axios.get(`${API}/movie`);
+    console.log(movies.data);
     setmovie(movies.data);
   };
   let deleteMovie = async (id) => {
-    let movies = await axios.delete(
-      `https://631d700ecc652771a4859a9c.mockapi.io/movies/${id}`
-    );
+    let movies = await axios.delete(`${API}/movie/${id}`);
     loadData();
   };
   return (
     <>
       <Container minwidth="sm">
-        <Box sx={{ flexGrow: 1, margin: 2 }}>
+        <Box sx={{ flexGrow: 1, marginTop: 3 }}>
           <Grid
             container
             spacing={{ xs: 2, md: 3 }}
@@ -34,7 +32,7 @@ function DashBoard() {
               return (
                 <Grid
                   style={{ margin: "0 auto" }}
-                  key={data.id}
+                  key={data._id}
                   item
                   xs={6}
                   sm={6}
@@ -43,7 +41,7 @@ function DashBoard() {
                   <CardCreate
                     deleteMovie={deleteMovie}
                     data={data}
-                    id={data.id}
+                    id={data._id}
                   />
                 </Grid>
               );

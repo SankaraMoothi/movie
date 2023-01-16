@@ -5,6 +5,7 @@ import { useFormik } from "formik";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
+import { API } from "../../gobalAPI/API";
 
 function MovieInput() {
   const navigate = useNavigate();
@@ -29,10 +30,7 @@ function MovieInput() {
     },
     validationSchema: formikValidation,
     onSubmit: async (values) => {
-      let movie = await axios.post(
-        "https://631d700ecc652771a4859a9c.mockapi.io/movies",
-        values
-      );
+      let movie = await axios.post(`${API}/movie/Addmovies`, [values]);
       navigate("/Portal");
     },
   });
@@ -138,7 +136,11 @@ function MovieInput() {
           >
             Submit
           </Button>
-          <Button variant="contained" fullWidth>
+          <Button
+            variant="contained"
+            onClick={() => navigate("/Portal")}
+            fullWidth
+          >
             Back
           </Button>
         </form>

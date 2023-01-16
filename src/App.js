@@ -1,17 +1,19 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import DashBoard from "./Component/DashBoard";
-import LoginForm from "./Component/LoginForm";
+import Login from "./Component/Login";
 import MovieEdit from "./Component/MovieEdit";
 import MovieInput from "./Component/MovieInput";
 import MovieView from "./Component/MovieView";
 import Portal from "./Component/Portal";
+import SignUp from "./Component/SignUp";
 
 function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<LoginForm />} />
+        <Route path="/" element={<Login />} />
+        <Route path="/signUp" element={<SignUp />} />
         <Route path="/Portal" element={<Portal />}>
           <Route path="" element={<DashBoard />} />
           <Route path="MovieInput" element={<MovieInput />} />
