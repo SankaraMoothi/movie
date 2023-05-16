@@ -23,6 +23,7 @@ function Login() {
     const users = await fetch(`${API}/user/login`, {
       method: "POST",
       body: JSON.stringify(data),
+      mode: "no-cors",
       headers: {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
