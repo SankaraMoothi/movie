@@ -32,6 +32,9 @@ function MovieInput() {
     onSubmit: async (values) => {
       let movie = await axios.post(`${API}/movie/Addmovies`, [values], {
         withCredentials: true,
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        },
       });
       navigate("/Portal");
     },

@@ -33,6 +33,9 @@ function MovieEdit() {
     onSubmit: async (values) => {
       const Movies = await axios.put(`${API}/movie/${param.id}`, values, {
         withCredentials: true,
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        },
       });
       navigate("/Portal");
     },
