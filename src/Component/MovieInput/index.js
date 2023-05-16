@@ -30,7 +30,9 @@ function MovieInput() {
     },
     validationSchema: formikValidation,
     onSubmit: async (values) => {
-      let movie = await axios.post(`${API}/movie/Addmovies`, [values]);
+      let movie = await axios.post(`${API}/movie/Addmovies`, [values], {
+        withCredentials: true,
+      });
       navigate("/Portal");
     },
   });

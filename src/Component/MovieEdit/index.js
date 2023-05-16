@@ -31,7 +31,9 @@ function MovieEdit() {
     },
     validationSchema: formikValidation,
     onSubmit: async (values) => {
-      const Movies = await axios.put(`${API}/movie/${param.id}`, values);
+      const Movies = await axios.put(`${API}/movie/${param.id}`, values, {
+        withCredentials: true,
+      });
       navigate("/Portal");
     },
   });

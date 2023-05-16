@@ -7,10 +7,9 @@ import "./index.css";
 function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [Conpassword, setConPassword] = useState("");
   const navigate = useNavigate();
-  useEffect(() => {
-    handleSubmit();
-  }, []);
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = {
@@ -34,6 +33,7 @@ function SignUp() {
         Email:
         <input
           className="form-input"
+          name="email"
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -44,6 +44,7 @@ function SignUp() {
         Password:
         <input
           className="form-input"
+          name="password"
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
@@ -54,9 +55,10 @@ function SignUp() {
         Conform Password:
         <input
           className="form-input"
+          name="password"
           type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          value={Conpassword}
+          onChange={(e) => setConPassword(e.target.value)}
         />
       </label>
       <br />

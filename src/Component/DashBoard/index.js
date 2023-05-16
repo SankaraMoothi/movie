@@ -1,22 +1,34 @@
 import { Grid } from "@mui/material";
 import { Box, Container } from "@mui/system";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { API } from "../../gobalAPI/API";
 import CardCreate from "../CardCreate";
+import { UserContext } from "../../UseContext";
+import { useNavigate } from "react-router-dom";
 
 function DashBoard() {
   const [movie, setmovie] = useState([]);
+  const { userInfo } = useContext(UserContext);
+  const navigate = useNavigate();
   useEffect(() => {
     loadData();
   }, []);
   let loadData = async () => {
-    let movies = await axios.get(`${API}/movie`);
-    console.log(movies.data);
-    setmovie(movies.data);
+    if (userInfo?.id) {
+      let movies = await axios.get(`${API}/movie`, {
+        withCredentials: true,
+      });
+
+      setmovie(movies.data);
+    } else {
+      navigate("/");
+    }
   };
   let deleteMovie = async (id) => {
-    let movies = await axios.delete(`${API}/movie/${id}`);
+    let movies = await axios.delete(`${API}/movie/${id}`, {
+      withCredentials: true,
+    });
     loadData();
   };
   return (

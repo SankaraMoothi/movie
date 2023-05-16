@@ -13,6 +13,7 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../../UseContext";
 
 const settings = ["Profile", "Account", "Dashboard"];
 
@@ -20,6 +21,7 @@ function TopBar({ mode, setMode }) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const navigate = useNavigate();
+  const { setUserInfo } = React.useContext(UserContext);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -34,6 +36,11 @@ function TopBar({ mode, setMode }) {
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
+  };
+  const handleLogout = () => {
+    setUserInfo(null);
+
+    navigate("/");
   };
 
   return (
@@ -189,10 +196,8 @@ function TopBar({ mode, setMode }) {
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))}
-              <MenuItem>
-                <Button sx={{ color: "inherit" }} onClick={() => navigate("/")}>
-                  Logout
-                </Button>
+              <MenuItem onClick={handleLogout}>
+                <Button sx={{ color: "inherit" }}>Logout</Button>
               </MenuItem>
             </Menu>
           </Box>
