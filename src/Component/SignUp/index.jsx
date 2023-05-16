@@ -16,7 +16,7 @@ function SignUp() {
       name: email,
       pass: password,
     };
-    const users = await fetch(`${API}/user/login`, {
+    const users = await fetch(`${API}/user/singUp`, {
       method: "POST",
       body: JSON.stringify(data),
 
