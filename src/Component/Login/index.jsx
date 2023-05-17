@@ -19,11 +19,9 @@ function Login() {
       name: userName,
       pass: password,
     };
-
     const users = await fetch(`${API}/user/login`, {
       method: "POST",
       body: JSON.stringify(data),
-
       headers: {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
