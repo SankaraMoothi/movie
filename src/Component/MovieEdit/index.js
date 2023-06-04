@@ -2,13 +2,15 @@ import { Box, Button, Typography } from "@mui/material";
 import axios from "axios";
 import TextField from "@mui/material/TextField";
 import * as yup from "yup";
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useFormik } from "formik";
 import { API } from "../../gobalAPI/API";
+import { UserContext } from "../../UseContext";
 
 function MovieEdit() {
   const param = useParams();
+  const { userInfo } = useContext(UserContext);
   const navigate = useNavigate();
   const formikValidation = yup.object({
     name: yup.string().required("Movie Name Must Filled"),
@@ -31,12 +33,10 @@ function MovieEdit() {
     },
     validationSchema: formikValidation,
     onSubmit: async (values) => {
-      const Movies = await axios.put(`${API}/movie/${param.id}`, values, {
-        withCredentials: true,
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-        },
-      });
+      const data = { ...values };
+      data["token"] = userInfo?.token;
+
+      const Movies = await axios.put(`${API}/movie/${param.id}`, data);
       navigate("/Portal");
     },
   });

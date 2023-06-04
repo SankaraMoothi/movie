@@ -16,15 +16,7 @@ function SignUp() {
       name: email,
       pass: password,
     };
-    const users = await fetch(`${API}/user/singUp`, {
-      method: "POST",
-      body: JSON.stringify(data),
-
-      headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
-      },
-    });
+    const users = await axios.post(`${API}/user/singUp`, data);
 
     // Send email and password to server useEffect(() => {
     navigate("/");

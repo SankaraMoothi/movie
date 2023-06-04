@@ -2,13 +2,15 @@ import { Card, TextField, Typography } from "@mui/material";
 import Button from "@mui/material/Button";
 import axios from "axios";
 import { useFormik } from "formik";
-import React from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { API } from "../../gobalAPI/API";
+import { UserContext } from "../../UseContext";
 
 function MovieInput() {
   const navigate = useNavigate();
+  const { userInfo } = useContext(UserContext);
   const formikValidation = yup.object({
     name: yup.string().required("Movie Name Must Filled"),
     rating: yup.string().min(1, "Rating Must Be Minimum Greater then 0"),
@@ -30,12 +32,10 @@ function MovieInput() {
     },
     validationSchema: formikValidation,
     onSubmit: async (values) => {
-      let movie = await axios.post(`${API}/movie/Addmovies`, [values], {
-        withCredentials: true,
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-        },
-      });
+      const data = { ...values };
+      data["token"] = userInfo?.token;
+
+      let movie = await axios.post(`${API}/movie/Addmovies`, [data]);
       navigate("/Portal");
     },
   });

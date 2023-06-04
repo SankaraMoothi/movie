@@ -16,9 +16,7 @@ function DashBoard() {
   }, []);
   let loadData = async () => {
     if (userInfo?.id) {
-      let movies = await axios.get(`${API}/movie`, {
-        withCredentials: true,
-      });
+      let movies = await axios.get(`${API}/movie`);
 
       setmovie(movies.data);
     } else {
@@ -26,8 +24,11 @@ function DashBoard() {
     }
   };
   let deleteMovie = async (id) => {
+    const { token } = userInfo;
     let movies = await axios.delete(`${API}/movie/${id}`, {
-      withCredentials: true,
+      headers: {
+        token: token,
+      },
     });
     loadData();
   };

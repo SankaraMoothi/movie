@@ -5,7 +5,7 @@ import LockIcon from "@mui/icons-material/Lock";
 import "./index.css";
 import { Link, useNavigate } from "react-router-dom";
 import { API } from "../../gobalAPI/API";
-import axios from "axios";
+
 import { useState } from "react";
 import { UserContext } from "../../UseContext";
 function Login() {
@@ -15,19 +15,19 @@ function Login() {
   const { setUserInfo } = useContext(UserContext);
   const onSubmit = async (event) => {
     event.preventDefault();
+
     const data = {
       name: userName,
       pass: password,
     };
     const users = await fetch(`${API}/user/login`, {
       method: "POST",
-      mode: "cors",
+
       body: JSON.stringify(data),
       headers: {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
       },
-      credentials: "include",
     });
     if (users.ok) {
       users.json().then((userInfo) => {
@@ -54,7 +54,6 @@ function Login() {
             <div className="username ">
               <PersonIcon className="svg" />
               <TextField
-                id="outlined-basic"
                 label="email"
                 name="email"
                 type="email"
@@ -67,7 +66,6 @@ function Login() {
             <div className="password">
               <LockIcon className="svg" />
               <TextField
-                id="outlined-basic"
                 label="Password"
                 name="password"
                 value={password}
