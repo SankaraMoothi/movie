@@ -82,10 +82,7 @@ export default function CardCreate({ data, id, deleteMovie }) {
               <IconButton onClick={() => navigate(`MovieEdit/${data._id}`)}>
                 <EditIcon />
               </IconButton>
-              <IconButton
-                sx={{ color: "red" }}
-                onClick={() => deleteMovie(`${data._id}`)}
-              >
+              <IconButton sx={{ color: "red" }} onClick={() => deleteMovie(id)}>
                 <DeleteIcon />
               </IconButton>
             </>
